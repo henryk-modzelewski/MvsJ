@@ -1,0 +1,11 @@
+using BenchmarkTools
+using figures
+@code_warntype Circle(1)+Rectangle(2.,1.)
+@time Circle(1)+Rectangle(2.,1.)
+@benchmark Circle(1)+Rectangle(2.,1.)
+
+using BenchmarkTools
+using Figures
+@code_warntype Circle(1)+Rectangle(2.,1.)
+@time Circle(1)+Rectangle(2.,1.)
+@benchmark Circle(1)+Rectangle(2.,1.)
