@@ -1,0 +1,13 @@
+matlab -nodisplay
+tic; loop(1,10^6); toc
+
+julia -L loop.jl
+@code_warntype loop(1,10^6)
+@code_warntype loop(1.,10^6)
+@code_warntype Loop(1,10^6)
+@code_warntype Loop(1.,10^6)
+using BenchmarkTools
+@benchmark loop(1,10^6)
+@benchmark loop(1.,10^6)
+@benchmark Loop(1,10^6)
+@benchmark Loop(1.,10^6)
