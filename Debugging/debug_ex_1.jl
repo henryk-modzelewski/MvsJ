@@ -36,3 +36,18 @@ function debug_ex{T<:Number}(x::AbstractArray{T})
     
 end # debug_ex
 
+function debug_ex{T<:String}(x::AbstractArray{T})
+
+    # If x is multidimensional, vectorize it by reference
+    (ndims(x) > 1) && (x = vec(x))
+
+    # Join the string array's elements into one string    
+    b = join(x, " + ")
+    
+    all(map(isnumber,x)) && (b = eval(parse(b)))
+    
+    return b
+    
+end # debug_ex
+
+

@@ -23,7 +23,7 @@ function debug_ex{T<:Number}(x::AbstractArray{T})
     n = length(x)
 
     # Initialize output
-    b = 0
+    b = zero(T)
 
     # Loop over values in x
     for i = 1:n
