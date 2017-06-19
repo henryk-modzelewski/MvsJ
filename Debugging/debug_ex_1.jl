@@ -1,4 +1,4 @@
-export debug_ex
+export debug_ex, wrapper
 
 """
 Use debug_ex(x::AbstractArray)
@@ -49,5 +49,4 @@ function debug_ex{T<:String}(x::AbstractArray{T})
     return b
     
 end # debug_ex
-
 

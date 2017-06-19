@@ -1,4 +1,4 @@
-export debug_ex
+export debug_ex_stable
 
 """
 Use debug_ex(x::AbstractArray)
@@ -14,13 +14,13 @@ West Grid Research Computing Summer School - UBC - June 2017
             June, 2017
 ================================================================================
 """
-function debug_ex{T<:Number}(x::AbstractArray{T})
+function debug_ex_stable{T<:Number}(x::AbstractArray{T})
 
     # If x is multidimensional, vectorize it by reference
-    (ndims(x) > 1) && (x = vec(x)) 
+    vx = vec(x) 
 
     # Get the length of x for iteration
-    n = length(x)
+    n = length(vx)
 
     # Initialize output
     b = zero(T)
@@ -28,11 +28,26 @@ function debug_ex{T<:Number}(x::AbstractArray{T})
     # Loop over values in x
     for i = 1:n
         
-        b += x[i]
+        b += vx[i]
 
     end # for
 
     return b
     
 end # debug_ex
+
+function debug_ex_stable{T<:String}(x::AbstractArray{T})
+
+    # If x is multidimensional, vectorize it by reference
+    (ndims(x) > 1) && (x = vec(x))
+
+    # Join the string array's elements into one string    
+    b = join(x, " + ")
+    
+    all(map(isnumber,x)) && (b = eval(parse(b)))
+    
+    return b
+    
+end # debug_ex
+
 
