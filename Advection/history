@@ -1,0 +1,12 @@
+matlab -nodisplay
+pool=parpool(2)
+T=zeros(9,9);
+T(2,2)=1;
+tic();R=advection(T,1,1,1,1,.01,100);toc();
+tic();R=advectionPF(T,1,1,1,1,.01,100);toc();
+tic();R=advectionPFV(T,1,1,1,1,.01,100);toc();
+tic();R=advectionD(T,1,1,1,1,.01,100);toc();
+T=zeros(99,99);
+T=zeros(999,999);
+pool=parpool(3)
+delete(pool)
