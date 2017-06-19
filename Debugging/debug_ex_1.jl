@@ -1,4 +1,4 @@
-export debug_ex, wrapper
+export debug_ex
 
 """
 Use debug_ex(x::AbstractArray)
@@ -17,7 +17,7 @@ West Grid Research Computing Summer School - UBC - June 2017
 function debug_ex{T<:Number}(x::AbstractArray{T})
 
     # If x is multidimensional, vectorize it by reference
-    (ndims(x) > 1) && (x = vec(x))
+    (ndims(x) > 1) &&(x = vec(x))
 
     # Get the length of x for iteration
     n = length(x)

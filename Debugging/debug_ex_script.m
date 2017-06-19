@@ -17,7 +17,7 @@ clear
 spmd
 
     % Create an array of 1,000,000 random numbers and distribute it over available workers
-    C = rand(100000,100000,'codistributed');
+    c
 
     % Run our function on each worker
     b = debug_ex(getLocalPart(C));
