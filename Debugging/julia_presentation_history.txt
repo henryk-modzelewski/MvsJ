@@ -1,0 +1,175 @@
+
+# time: 2017-06-19 14:50:06 PDT
+# mode: julia
+	@benchmark Circle(1)+Rectangle(2.,1.)
+# time: 2017-06-19 15:36:53 PDT
+# mode: julia
+	include("DebugExamples.jl")
+# time: 2017-06-19 15:38:32 PDT
+# mode: julia
+	debug_ex(rand(10,10))
+# time: 2017-06-19 15:38:39 PDT
+# mode: julia
+	using Gallium
+# time: 2017-06-19 15:39:01 PDT
+# mode: julia
+	bp = breakpoint("debug_ex_1.jl", 20)
+# time: 2017-06-19 15:39:11 PDT
+# mode: julia
+	debug_ex(rand(10,10))
+# time: 2017-06-19 15:41:07 PDT
+# mode: julia
+	Gallium.disable(bp)
+# time: 2017-06-19 15:42:04 PDT
+# mode: julia
+	bp = breakpoint(debug_ex)
+# time: 2017-06-19 15:42:08 PDT
+# mode: julia
+	debug_ex(rand(10,10))
+# time: 2017-06-19 15:42:12 PDT
+# mode: julia
+	quit()
+# time: 2017-06-19 15:42:16 PDT
+# mode: julia
+	include("DebugExamples.jl")
+# time: 2017-06-19 15:42:20 PDT
+# mode: julia
+	using Gallium
+# time: 2017-06-19 15:42:29 PDT
+# mode: julia
+	bp = breakpoint(debug_ex)
+# time: 2017-06-19 15:42:50 PDT
+# mode: julia
+	x = [string(i) for i in 1:100]
+# time: 2017-06-19 15:43:07 PDT
+# mode: julia
+	debug_ex(x)
+# time: 2017-06-19 15:59:14 PDT
+# mode: julia
+	quit()
+# time: 2017-06-19 15:59:20 PDT
+# mode: julia
+	include("DebugExamples.jl")
+# time: 2017-06-19 15:59:29 PDT
+# mode: julia
+	x = rand(1000,1000)
+# time: 2017-06-19 15:59:49 PDT
+# mode: julia
+	@time debug_ex(x)
+# time: 2017-06-19 16:00:51 PDT
+# mode: julia
+	@profile debug_ex(x)
+# time: 2017-06-19 16:00:57 PDT
+# mode: julia
+	Profile.print()
+# time: 2017-06-19 16:02:04 PDT
+# mode: julia
+	@profile debug_ex(x)
+# time: 2017-06-19 16:02:12 PDT
+# mode: julia
+	x = rand(10000,10000)
+# time: 2017-06-19 16:02:20 PDT
+# mode: julia
+	@profile debug_ex(x)
+# time: 2017-06-19 16:02:36 PDT
+# mode: julia
+	Profile.print()
+# time: 2017-06-19 16:03:14 PDT
+# mode: julia
+	Profile.print(format=:flat)
+# time: 2017-06-19 16:03:30 PDT
+# mode: julia
+	q
+# time: 2017-06-19 16:03:33 PDT
+# mode: julia
+	quit()
+# time: 2017-06-19 16:04:07 PDT
+# mode: julia
+	x = rand(1000,1000)
+# time: 2017-06-19 16:04:11 PDT
+# mode: julia
+	debug_ex(x)
+# time: 2017-06-19 16:04:16 PDT
+# mode: julia
+	include("DebugExamples.jl")
+# time: 2017-06-19 16:04:17 PDT
+# mode: julia
+	debug_ex(x)
+# time: 2017-06-19 16:04:33 PDT
+# mode: julia
+	Profile.clear_malloc_data()
+# time: 2017-06-19 16:04:38 PDT
+# mode: julia
+	debug_ex(x)
+# time: 2017-06-19 16:04:41 PDT
+# mode: julia
+	quit()
+# time: 2017-06-19 16:06:27 PDT
+# mode: julia
+	include("DebugExamples.jl")
+# time: 2017-06-19 16:06:30 PDT
+# mode: julia
+	debug_ex(x)
+# time: 2017-06-19 16:06:35 PDT
+# mode: julia
+	x = rand(1000,1000)
+# time: 2017-06-19 16:06:37 PDT
+# mode: julia
+	debug_ex(x)
+# time: 2017-06-19 16:06:45 PDT
+# mode: julia
+	@code_warntype debug_ex(x)
+# time: 2017-06-19 16:09:48 PDT
+# mode: julia
+	debug_ex_stable(x)
+# time: 2017-06-19 16:09:53 PDT
+# mode: julia
+	@time debug_ex_stable(x)
+# time: 2017-06-19 16:11:33 PDT
+# mode: julia
+	quit()
+# time: 2017-06-19 16:11:47 PDT
+# mode: julia
+	include("DebugExamples.jl")
+# time: 2017-06-19 16:11:59 PDT
+# mode: julia
+	workers()
+# time: 2017-06-19 16:14:04 PDT
+# mode: julia
+	par_ex_slow(x)
+# time: 2017-06-19 16:14:07 PDT
+# mode: julia
+	x = rand(1000,1000)
+# time: 2017-06-19 16:14:09 PDT
+# mode: julia
+	par_ex_slow(x)
+# time: 2017-06-19 16:14:28 PDT
+# mode: julia
+	@everywhere include("DebugExamples.jl")
+# time: 2017-06-19 16:14:32 PDT
+# mode: julia
+	par_ex_slow(x)
+# time: 2017-06-19 16:15:24 PDT
+# mode: julia
+	@time par_ex_slow(x)
+# time: 2017-06-19 16:16:21 PDT
+# mode: julia
+	@time par_ex_fast(x)
+# time: 2017-06-19 16:16:29 PDT
+# mode: julia
+	quit()
+# time: 2017-06-19 16:16:45 PDT
+# mode: julia
+	@everywhere include("DebugExamples.jl")
+# time: 2017-06-19 16:16:48 PDT
+# mode: julia
+	x = rand(1000,1000)
+# time: 2017-06-19 16:16:57 PDT
+# mode: julia
+	par_ex_fast(x)
+# time: 2017-06-19 16:17:05 PDT
+# mode: julia
+	@time par_ex_fast(x)
+# time: 2017-06-19 16:22:37 PDT
+# mode: julia
+	quit()

@@ -34,7 +34,7 @@ function y = prof_ex(x)
         % Skip collected them, unecessary memory allocations
 
         % Append to previously filled elements of pre-allocated memory
-        n_elements = sum(ind);
+        n_elements = sum(ind); % nnz doesnt scale well
         y(count+1:count+n_elements) = x(ind,i);
 
         % Update counter
