@@ -1,4 +1,4 @@
-%Use debug_ex(x)
+%Usev debug_ex(x)
 %This simple function sums each element in 'x'
 %
 %Julia Debugging Example - debug_ex
@@ -17,7 +17,7 @@ clear
 spmd
 
     % Create an array of 1,000,000 random numbers and distribute it over available workers
-    c
+    C = rand(1000,1000,'codistributed');
 
     % Run our function on each worker
     b = debug_ex(getLocalPart(C));
